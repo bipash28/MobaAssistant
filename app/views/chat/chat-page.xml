@@ -1,0 +1,26 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+  <ActionBar title="In-Game Chat">
+    <ActionItem tap="{{ toggleTranslation }}" ios.position="right" android.position="actionBar">
+      <Label text="{{ isTranslationEnabled ? 'Disable Translation' : 'Enable Translation' }}" />
+    </ActionItem>
+  </ActionBar>
+
+  <GridLayout rows="*, auto">
+    <ListView row="0" items="{{ messages }}" class="chat-list">
+      <ListView.itemTemplate>
+        <GridLayout columns="*" class="p-2">
+          <StackLayout>
+            <Label text="{{ original }}" class="text-base" textWrap="true" />
+            <Label text="{{ translation }}" class="text-sm text-gray-500" textWrap="true" 
+                  visibility="{{ translation ? 'visible' : 'collapsed' }}" />
+          </StackLayout>
+        </GridLayout>
+      </ListView.itemTemplate>
+    </ListView>
+
+    <GridLayout row="1" columns="*, auto" class="p-2 bg-white">
+      <TextField col="0" text="{{ messageText }}" hint="Type your message..." class="input" />
+      <Button col="1" text="Send" tap="{{ sendMessage }}" class="btn btn-primary" />
+    </GridLayout>
+  </GridLayout>
+</Page>

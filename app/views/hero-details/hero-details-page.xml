@@ -1,0 +1,55 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+  <ActionBar title="{{ hero.name }}">
+    <NavigationButton text="Back" android.systemIcon="ic_menu_back" />
+  </ActionBar>
+  
+  <ScrollView>
+    <StackLayout class="p-4">
+      <!-- Hero Stats -->
+      <GridLayout rows="auto" columns="*,*,*" class="mb-4">
+        <StackLayout col="0" class="text-center">
+          <Label text="Damage" class="text-sm text-gray-500" />
+          <Label text="{{ hero.stats.damage }}" class="text-lg font-bold" />
+        </StackLayout>
+        <StackLayout col="1" class="text-center">
+          <Label text="Durability" class="text-sm text-gray-500" />
+          <Label text="{{ hero.stats.durability }}" class="text-lg font-bold" />
+        </StackLayout>
+        <StackLayout col="2" class="text-center">
+          <Label text="Difficulty" class="text-sm text-gray-500" />
+          <Label text="{{ hero.stats.difficulty }}" class="text-lg font-bold" />
+        </StackLayout>
+      </GridLayout>
+
+      <!-- Skills -->
+      <Label text="Skills" class="text-xl font-bold mb-2" />
+      <ListView items="{{ hero.skills }}" height="{{ hero.skills.length * 80 }}" class="mb-4">
+        <ListView.itemTemplate>
+          <GridLayout rows="auto,auto" class="p-2">
+            <Label row="0" text="{{ name }}" class="font-semibold" />
+            <Label row="1" text="{{ description }}" textWrap="true" class="text-sm text-gray-600" />
+          </GridLayout>
+        </ListView.itemTemplate>
+      </ListView>
+
+      <!-- Counters -->
+      <Label text="Counter Heroes" class="text-xl font-bold mb-2" />
+      <WrapLayout class="mb-4">
+        <Label text="{{ counter }}" class="m-1 p-2 bg-gray-200 rounded" repeat="{{ hero.counters }}" />
+      </WrapLayout>
+
+      <!-- Recommended Builds -->
+      <Label text="Recommended Builds" class="text-xl font-bold mb-2" />
+      <ListView items="{{ hero.recommendedBuilds }}" height="{{ hero.recommendedBuilds.length * 100 }}" class="mb-4">
+        <ListView.itemTemplate>
+          <StackLayout class="p-2">
+            <Label text="{{ name }}" class="font-semibold" />
+            <WrapLayout>
+              <Label text="{{ item }}" class="m-1 p-1 bg-blue-100 rounded text-sm" repeat="{{ items }}" />
+            </WrapLayout>
+          </StackLayout>
+        </ListView.itemTemplate>
+      </ListView>
+    </StackLayout>
+  </ScrollView>
+</Page>

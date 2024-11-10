@@ -1,0 +1,14 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+  <ActionBar title="MLBB Assistant" />
+  
+  <GridLayout>
+    <ListView items="{{ heroes }}" itemTap="{{ onHeroTap }}" class="list-group">
+      <ListView.itemTemplate>
+        <GridLayout columns="auto,*" class="list-group-item p-4">
+          <Label col="1" text="{{ name }}" class="text-lg font-semibold" />
+          <Label col="1" text="{{ role }}" class="text-sm text-gray-500" />
+        </GridLayout>
+      </ListView.itemTemplate>
+    </ListView>
+  </GridLayout>
+</Page>

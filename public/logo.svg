@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Circle -->
+  <circle cx="256" cy="256" r="248" fill="#1E293B" stroke="#6366F1" stroke-width="16"/>
+  
+  <!-- AI Circuit Pattern -->
+  <path d="M128 256H192M320 256H384M256 128V192M256 320V384" 
+        stroke="#8B5CF6" stroke-width="12" stroke-linecap="round"/>
+  <path d="M176 176L208 208M304 304L336 336M304 176L272 208M176 336L208 304" 
+        stroke="#8B5CF6" stroke-width="12" stroke-linecap="round"/>
+  
+  <!-- Central Shield -->
+  <path d="M256 160L352 208V288L256 352L160 288V208L256 160Z" 
+        fill="#6366F1" fill-opacity="0.2" stroke="#6366F1" stroke-width="12"/>
+  
+  <!-- AI Core -->
+  <circle cx="256" cy="256" r="48" fill="#EC4899"/>
+  
+  <!-- Pulse Effect -->
+  <circle cx="256" cy="256" r="64" stroke="#EC4899" stroke-width="4" stroke-dasharray="8 8">
+    <animate attributeName="r" values="64;72;64" dur="2s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="1;0;1" dur="2s" repeatCount="indefinite"/>
+  </circle>
+</svg>

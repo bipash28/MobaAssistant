@@ -1,0 +1,61 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+  <ActionBar title="Game Analysis">
+    <NavigationButton text="Back" android.systemIcon="ic_menu_back" />
+  </ActionBar>
+
+  <ScrollView>
+    <StackLayout class="p-4">
+      <!-- Game Timer -->
+      <Label text="{{ gameTime }}" class="text-2xl font-bold text-center mb-4" />
+
+      <!-- Team Overview -->
+      <GridLayout rows="auto" columns="*,*" class="mb-4">
+        <StackLayout col="0" class="text-center">
+          <Label text="Ally Team" class="font-bold" />
+          <Label text="{{ allyTeam.totalGold }}" class="text-lg" />
+          <Label text="{{ allyTeam.towers }} towers" />
+        </StackLayout>
+        <StackLayout col="1" class="text-center">
+          <Label text="Enemy Team" class="font-bold" />
+          <Label text="{{ enemyTeam.totalGold }}" class="text-lg" />
+          <Label text="{{ enemyTeam.towers }} towers" />
+        </StackLayout>
+      </GridLayout>
+
+      <!-- Recommendations -->
+      <Label text="Recommendations" class="text-xl font-bold mb-2" />
+      <ListView items="{{ analysis.recommendations }}" height="{{ analysis.recommendations.length * 50 }}" class="mb-4">
+        <ListView.itemTemplate>
+          <Label text="{{ $value }}" class="p-2 text-blue-600" textWrap="true" />
+        </ListView.itemTemplate>
+      </ListView>
+
+      <!-- Threats -->
+      <Label text="Threats" class="text-xl font-bold mb-2" />
+      <ListView items="{{ analysis.threats }}" height="{{ analysis.threats.length * 50 }}" class="mb-4">
+        <ListView.itemTemplate>
+          <Label text="{{ $value }}" class="p-2 text-red-600" textWrap="true" />
+        </ListView.itemTemplate>
+      </ListView>
+
+      <!-- Objectives -->
+      <Label text="Objectives" class="text-xl font-bold mb-2" />
+      <ListView items="{{ analysis.objectives }}" height="{{ analysis.objectives.length * 50 }}" class="mb-4">
+        <ListView.itemTemplate>
+          <Label text="{{ $value }}" class="p-2 text-green-600" textWrap="true" />
+        </ListView.itemTemplate>
+      </ListView>
+
+      <!-- Counter Build Suggestions -->
+      <Label text="Counter Build Suggestions" class="text-xl font-bold mb-2" />
+      <ListView items="{{ counterBuild.itemSuggestions }}" height="{{ counterBuild.itemSuggestions.length * 80 }}" class="mb-4">
+        <ListView.itemTemplate>
+          <GridLayout rows="auto,auto" class="p-2">
+            <Label row="0" text="{{ $value }}" class="font-semibold" />
+            <Label row="1" text="{{ $parent.counterBuild.reasoning[$index] }}" class="text-sm text-gray-600" textWrap="true" />
+          </GridLayout>
+        </ListView.itemTemplate>
+      </ListView>
+    </StackLayout>
+  </ScrollView>
+</Page>

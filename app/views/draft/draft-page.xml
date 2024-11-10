@@ -1,0 +1,84 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+  <ActionBar title="Draft Analysis">
+    <ActionItem tap="{{ toggleRank }}" ios.position="right" android.position="actionBar">
+      <Label text="{{ currentRank }}" />
+    </ActionItem>
+  </ActionBar>
+
+  <GridLayout rows="auto,*,auto">
+    <!-- Draft Phase Indicator -->
+    <StackLayout row="0" class="p-4 bg-blue-100">
+      <Label text="{{ 'Phase ' + currentPhase }}" class="text-lg font-bold text-center" />
+      <Label text="{{ phaseDescription }}" class="text-sm text-center" />
+    </StackLayout>
+
+    <!-- Main Content -->
+    <ScrollView row="1">
+      <StackLayout class="p-4">
+        <!-- Ban Suggestions -->
+        <Label text="Recommended Bans" class="text-xl font-bold mb-2" 
+               visibility="{{ showBanPhase ? 'visible' : 'collapsed' }}" />
+        <ListView items="{{ banSuggestions }}" 
+                 visibility="{{ showBanPhase ? 'visible' : 'collapsed' }}"
+                 class="mb-4">
+          <ListView.itemTemplate>
+            <GridLayout columns="auto,*" class="p-2">
+              <Label col="0" text="{{ hero }}" class="font-semibold" />
+              <Label col="1" text="{{ reason }}" class="text-sm text-gray-600" textWrap="true" />
+            </GridLayout>
+          </ListView.itemTemplate>
+        </ListView>
+
+        <!-- Counter Picks -->
+        <Label text="Counter Suggestions" class="text-xl font-bold mb-2"
+               visibility="{{ showPickPhase ? 'visible' : 'collapsed' }}" />
+        <ListView items="{{ counterSuggestions }}"
+                 visibility="{{ showPickPhase ? 'visible' : 'collapsed' }}"
+                 class="mb-4">
+          <ListView.itemTemplate>
+            <GridLayout rows="auto,auto,auto" class="p-2">
+              <Label row="0" text="{{ hero }}" class="font-semibold" />
+              <Label row="1" text="{{ reasons.join(', ') }}" class="text-sm text-gray-600" textWrap="true" />
+              
+              <!-- Emblem and Spell Suggestions -->
+              <GridLayout row="2" columns="*,*" class="mt-2">
+                <StackLayout col="0">
+                  <Label text="Emblems" class="font-medium" />
+                  <Label text="{{ emblems[0].name }}" class="text-sm" />
+                </StackLayout>
+                <StackLayout col="1">
+                  <Label text="Spells" class="font-medium" />
+                  <Label text="{{ spells[0].name }}" class="text-sm" />
+                </StackLayout>
+              </GridLayout>
+            </GridLayout>
+          </ListView.itemTemplate>
+        </ListView>
+
+        <!-- Build Suggestions -->
+        <Label text="Recommended Builds" class="text-xl font-bold mb-2"
+               visibility="{{ selectedHero ? 'visible' : 'collapsed' }}" />
+        <ListView items="{{ selectedHeroBuilds }}"
+                 visibility="{{ selectedHero ? 'visible' : 'collapsed' }}"
+                 height="{{ selectedHeroBuilds.length * 100 }}">
+          <ListView.itemTemplate>
+            <StackLayout class="p-2">
+              <Label text="{{ name }}" class="font-semibold" />
+              <WrapLayout>
+                <Label text="{{ item }}" class="m-1 p-1 bg-blue-100 rounded text-sm"
+                       repeat="{{ items }}" />
+              </WrapLayout>
+              <Label text="{{ reason }}" class="text-sm text-gray-600" textWrap="true" />
+            </StackLayout>
+          </ListView.itemTemplate>
+        </ListView>
+      </StackLayout>
+    </ScrollView>
+
+    <!-- Hero Selection -->
+    <GridLayout row="2" columns="*,auto" class="p-4 bg-gray-100">
+      <TextField col="0" text="{{ selectedHero }}" hint="Select hero..." editable="false" />
+      <Button col="1" text="Pick" tap="{{ confirmPick }}" class="btn btn-primary" />
+    </GridLayout>
+  </GridLayout>
+</Page>

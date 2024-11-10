@@ -1,0 +1,225 @@
+/* Base Styles */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Color Palette - Modern Gaming Theme */
+:root {
+  --primary: #6366f1;    /* Indigo */
+  --secondary: #ec4899;  /* Pink */
+  --accent: #8b5cf6;    /* Purple */
+  --success: #10b981;   /* Emerald */
+  --warning: #f59e0b;   /* Amber */
+  --danger: #ef4444;    /* Red */
+  --background: #0f172a; /* Slate 900 */
+  --surface: #1e293b;   /* Slate 800 */
+  --text: #f1f5f9;      /* Slate 100 */
+}
+
+/* Global Styles */
+.page {
+  background-color: var(--background);
+  color: var(--text);
+}
+
+/* Modern Card Design */
+.card {
+  background-color: var(--surface);
+  border-radius: 1rem;
+  padding: 1rem;
+  margin: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Glassmorphism Effects */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Modern Buttons */
+.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: white;
+}
+
+.btn-secondary {
+  background-color: var(--secondary);
+  color: white;
+}
+
+/* Status Indicators */
+.status-online {
+  background-color: var(--success);
+}
+
+.status-warning {
+  background-color: var(--warning);
+}
+
+.status-danger {
+  background-color: var(--danger);
+}
+
+/* Modern List Items */
+.list-item {
+  padding: 1rem;
+  margin: 0.5rem 0;
+  border-radius: 0.5rem;
+  background-color: var(--surface);
+  transition: transform 0.2s ease;
+}
+
+.list-item:active {
+  transform: scale(0.98);
+}
+
+/* Stat Badges */
+.stat-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* Navigation Tabs */
+.tab-bar {
+  background-color: var(--surface);
+  padding: 0.5rem;
+  border-radius: 1rem;
+}
+
+.tab {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  color: var(--text);
+}
+
+.tab.active {
+  background-color: var(--primary);
+}
+
+/* Progress Indicators */
+.progress-bar {
+  height: 0.5rem;
+  border-radius: 9999px;
+  background-color: var(--surface);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: var(--primary);
+  transition: width 0.3s ease;
+}
+
+/* Animations */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+/* Hero Cards */
+.hero-card {
+  background-color: var(--surface);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.hero-card:active {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Stats Display */
+.stat-display {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 0.5rem;
+}
+
+/* Skill Icons */
+.skill-icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.75rem;
+  background-color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Combat Timeline */
+.combat-timeline {
+  position: relative;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.timeline-event {
+  position: relative;
+  padding-left: 2rem;
+  margin: 1rem 0;
+}
+
+.timeline-event::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1rem;
+  height: 1rem;
+  background-color: var(--primary);
+  border-radius: 50%;
+}
+
+/* Map Overlay */
+.map-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+/* Objective Timer */
+.objective-timer {
+  background-color: var(--surface);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.timer-countdown {
+  font-family: monospace;
+  font-size: 1.25rem;
+  color: var(--accent);
+}
